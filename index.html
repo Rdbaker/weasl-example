@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weasl Example</title>
+  </head>
+  <body>
+
+    <h1>This is my cool website</h1>
+    <button onclick="weasl.signup().then(console.info).catch(console.warn);">Signup</button>
+    <button onclick="weasl.login().then(console.info).catch(console.warn);">Login</button>
+    <button onclick="weasl.logout().then(console.info).catch(console.warn);">Logout</button>
+    <button onclick="weasl.getCurrentUser().then(console.info).catch(console.warn);">Print current user to console</button>
+
+  <script>
+(function(window, document) {
+if (window.weasl) { console.error('Weasl embed already included'); return; }
+var w = {}, m = ['init', 'login', 'signup', 'setAttribute', 'getCurrentUser']; w._c = [];
+m.forEach(function(me) {w[me] = function() {w._c.push([me, arguments])};});
+var elt = document.createElement('script');
+elt.type = "text/javascript"; elt.async = true;
+elt.src = "https://js.weasl.in/embed/shim.js";
+var before = document.getElementsByTagName('script')[0];
+before.parentNode.insertBefore(elt, before);
+window.weasl = w;
+})(window, document, undefined);
+weasl.init('9a63c7237a');
+  </script>
+  </body>
+</html>
